@@ -1,0 +1,172 @@
+:root {
+  --primary: #FF3B30;
+  --primary-dark: #D70015;
+  --secondary: #007AFF;
+  --accent: #FFCC00;
+  --bg-dark: #0F172A;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass-morphism {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.sos-button {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff4b2b, #ff416c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 0 50px rgba(255, 59, 48, 0.5);
+  border: 10px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.sos-button::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sos-button:hover::before {
+  opacity: 1;
+}
+
+.pulse {
+  animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 59, 48, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 40px rgba(255, 59, 48, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(255, 59, 48, 0);
+  }
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 16px;
+  padding-bottom: 90px; /* Space for navbar */
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: radial-gradient(circle at top right, rgba(255, 59, 48, 0.05), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(0, 122, 255, 0.05), transparent 40%);
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Mobile specific font sizes */
+@media (max-width: 380px) {
+  h2 { font-size: 1.5rem !important; }
+  .sos-button { width: 180px !important; height: 180px !important; }
+}
+
+/* Transitions */
+.fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Styling for Mobile */
+input, select, textarea {
+  -webkit-appearance: none;
+  font-size: 16px !important; /* Prevents auto-zoom on iOS */
+  transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--secondary) !important;
+  outline: none;
+}
+
+/* Footer Nav Safe Area */
+nav {
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+.admin-badge {
+  background: var(--accent);
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Hide scrollbars but allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
